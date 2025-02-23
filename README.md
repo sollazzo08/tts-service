@@ -1,2 +1,2 @@
 # tts-service
-Convert text to speech using OpenAI TTS Model
+Convert text to speech using ELEVENLABS

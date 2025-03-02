@@ -13,16 +13,13 @@ import (
 const elevenLabsAPIURL = "https://api.elevenlabs.io/v1/text-to-speech/%s"
 
 // Calls ElevenLabs API and returns MP3 data
-func GenerateTTS(voiceID, text, apiKey string, stability, similarityBoost float64) ([]byte, error) {
+func GenerateTTS(voiceID, text, apiKey string, stability, similarityBoost, style, speed float64, useSpeakerBoost bool) ([]byte, error) {
 
 	url := fmt.Sprintf(elevenLabsAPIURL, voiceID)
 
 	payload, err := json.Marshal(map[string]interface{}{
-		"text": text,
-		"voice_settings": map[string]float64{
-			"stability":        stability,
-			"similarity_boost": similarityBoost,
-		},
+		"text":     text,
+		"model_id": "eleven_multilingual_v2",
 	})
 	if err != nil {
 		return nil, err
